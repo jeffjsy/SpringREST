@@ -1,49 +1,42 @@
-package com.jeffreysy.rest;
+package com.jeffreysy.rest.Class;
 
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "customer")
 public class Customer {
 	
-    @Id   
-    @Column(name = "customerId")
-    private Long customer_id;
-    
-    @Column(name = "username")
-    private String username;
-    
-    @Column(name = "password")
-    private String password;
-    
-    @Column(name = "firstName")
-    private String firstName;
-    
-    @Column(name = "lastName")
+    @Id       
+    public Long customer_id;    
+    private String username;   
+    private String password;   
+    private String firstName;    
     private String lastName;
-    
-    @Column(name = "address")
     private String address;
-    
-    @Column(name = "city")
     private String city;
-    
-    @Column(name = "postalCode")
     private String postalCode;
-    
-    @Column(name = "phone")
     private String phone;
-    
-    @Column(name = "emailId")
     private String emailId;
     
     public Customer() {
     }
 
-	public Customer(Long customer_id, String username, String password, String firstName, String lastName,
-			String address, String city, String postalCode, String phone, String emailId) {
+    @JsonCreator
+	public Customer(
+			@JsonProperty("customer_id") Long customer_id, 
+			@JsonProperty("username") String username,
+			@JsonProperty("password") String password,
+			@JsonProperty("firstName") String firstName, 
+			@JsonProperty("lastName") String lastName,
+			@JsonProperty("address") String address,
+			@JsonProperty("city")String city, 
+			@JsonProperty("postalCode")String postalCode, 
+			@JsonProperty("phone")String phone, 
+			@JsonProperty("emailId")String emailId) {
 		super();
 		this.customer_id = customer_id;
 		this.username = username;

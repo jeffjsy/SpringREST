@@ -2,6 +2,8 @@ package com.jeffreysy.rest;
 
 import org.springframework.stereotype.Service;
 
+import com.jeffreysy.rest.Class.Customer;
+
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.Collection;
@@ -27,11 +29,7 @@ public class InMemoryCustomerService implements CustomerService {
 	public Optional<Customer> find(Long customerId){
 		return Optional.ofNullable(customers.get(customerId));
 	}
-
-	@Override
-	public Optional<Customer> findById(Long customer_id) {
-		return find(customer_id);
-	}
+	
 	
 	
 }
